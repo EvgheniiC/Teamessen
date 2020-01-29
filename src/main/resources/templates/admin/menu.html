@@ -1,0 +1,78 @@
+ <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+     <span class="navbar-toggler-icon"></span>
+   </button>
+   <div class="collapse navbar-collapse" id="navbarNav">
+     <ul class="navbar-nav">
+       <li class="nav-item active">
+         <a class="nav-link" th:href="@{/admin}" th:text="#{home}"><span class="sr-only">(current)</span></a>
+       </li>
+       <li class="nav-item dropdown">
+         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+            th:text="#{orders}">
+         </a>
+         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+           <a class="dropdown-item" th:href="@{/admin/newOrders}" th:text="#{order.new}"><span class="sr-only">(current)</span></a>
+           <a class="dropdown-item" th:href="@{/admin/pendingOrders}" th:text="#{order.pending}"><span class="sr-only">(current)</span></a>
+           <a class="dropdown-item" th:href="@{/admin/approvedOrders}" th:text="#{order.approved}"><span class="sr-only">(current)</span></a>
+           <a class="dropdown-item" th:href="@{/admin/workOrders}" th:text="#{order.work}"><span class="sr-only">(current)</span></a>
+           <a class="dropdown-item" th:href="@{/admin/completedOrders}" th:text="#{order.completed}"><span class="sr-only">(current)</span></a>
+           <a class="dropdown-item" th:href="@{/admin/paymentOrders}" th:text="#{order.payment}"><span class="sr-only">(current)</span></a>
+           <a class="dropdown-item" th:href="@{/admin/canceledOrders}" th:text="#{order.canceled}"><span class="sr-only">(current)</span></a>
+         </div>
+       </li>
+       <li class="nav-item dropdown">
+         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+            th:text="#{employees}">
+         </a>
+         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+           <a class="dropdown-item" th:href="@{/admin/employees}" th:text="#{emploee.list}"><span class="sr-only">(current)</span></a>
+           <a class="dropdown-item" th:href="@{/admin/newEmployee}" th:text="#{createNew}"><span class="sr-only">(current)</span></a>
+         </div>
+       </li>
+       <li class="nav-item dropdown">
+         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+            th:text="#{clients}">
+         </a>
+         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+           <a class="dropdown-item" th:href="@{/admin/clients}" th:text="#{client.list}"><span class="sr-only">(current)</span></a>
+           <a class="dropdown-item" th:href="@{/admin/newClient}" th:text="#{createNew}"><span class="sr-only">(current)</span></a>
+         </div>
+       </li>
+       <li class="nav-item active">
+         <a class="nav-link" th:href="@{/admin/services}" th:text="#{services}"><span class="sr-only">(current)</span></a>
+       </li>
+       <li class="nav-item active">
+         <a class="nav-link" th:href="@{/admin/register}" th:text="#{Register.Info}"><span class="sr-only">(current)</span></a>
+       </li>
+       <li class="nav-item dropdown">
+         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+            th:text="#{accrual}">
+         </a>
+         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+           <a class="dropdown-item" th:href="@{/admin/period}" th:text="#{accrual}"><span class="sr-only">(current)</span></a>
+           <a class="dropdown-item" th:href="@{/admin/dataPeriod}" th:text="#{get.period}"><span class="sr-only">(current)</span></a>
+           <a class="dropdown-item" th:href="@{/admin/accrual}" th:text="#{accrual.salary}"><span class="sr-only">(current)</span></a>
+           <a class="dropdown-item" th:href="@{/admin/accrualSalary}" th:text="#{salary.accrual}"><span class="sr-only">(current)</span></a>
+           <a class="dropdown-item" th:href="@{/admin/querySalary}" th:text="#{need.salary}"><span class="sr-only">(current)</span></a>
+
+         </div>
+       </li>
+       <li class="nav-item active">
+         <a class="nav-link" th:href="@{/admin/resetPassword}" tb:text="#{reset.password}"><span class="sr-only">(current)</span></a>
+       </li>
+       <li class="nav-item active">
+         <a class="nav-link" th:href="@{/admin/chat}" th:text="#{chat}"><span class="sr-only">(current)</span></a>
+       </li>
+       <li class="nav-item">
+         <a class="nav-item nav-link" th:href="@{/logout}" th:text="#{logout}"></a>
+       </li>
+     </ul>
+   </div>
+   <nav class="navbar navbar-light bg-light">
+     <form class="form-inline" method="POST" th:action="@{/admin/find}">
+       <input class="form-control mr-sm-2" name="search" type="search" placeholder="Search" aria-label="Search">
+       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search user</button>
+     </form>
+   </nav>
+ </nav>

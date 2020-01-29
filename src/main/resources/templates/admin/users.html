@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8"/>
+        <link th:href="@{/bootstrap/css/bootstrap.min.css}"
+              rel="stylesheet" media="screen"/>
+        <script th:src="@{/jquery/jquery.min.js}"></script>  
+        <script th:src="@{/popper/popper.min.js}"></script>  
+        <script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>   
+
+    </head>
+
+    <body>
+       <th:block th:include="/admin/_menu"></th:block>  
+        <div class=" d-flex flex-row justify-content-center align-items-center" >
+
+            <div class="container">
+                <h2 th:text="#{users}"></h2>
+                <table  class="table">
+                  <thead class="thead-light">
+                        <tr>
+                            <th th:text="#{Login}"></th>
+                            <th th:text="#{first.Name}"></th>
+                            <th th:text="#{last.Name}"></th>
+                            <th th:text="#{role}"></th>
+                            <th th:text="#{active}"></th>
+                            <th th:text="#{reset.password}"></th>
+                            <th th:text="#{active.deactive}"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:if="${users.empty}">
+                            <td colspan="2" th:text="#{NoUserAvailable}"> </td>
+                        </tr>
+                        <tr th:each="user : ${users}">
+                            <td th:if="${user.role.roleName=='ROLE_ADMIN'}"><span th:text="${user.login}"> </span></td>
+                            <td th:if="${user.role.roleName=='ROLE_USER'}" style="text-align: center">
+                                        <a class="active" th:href="@{/admin/client/{login}(login=${user.login})}"
+                                          th:text="${user.login}"></a>
+                                </td>
+                            <td th:if="${user.role.roleName=='ROLE_WORKER'}" style="text-align: center">
+                                        <a class="active" th:href="@{/admin/employee/{login}(login=${user.login})}"
+                                          th:text="${user.login}"></a>
+                                </td>
+                            <td><span th:text="${user.firstName}"> </span></td>
+                            <td><span th:text="${user.lastName}"> </span></td>
+                            <td><span th:text="${user.role.name}"> </span></td>
+                            <td><input type="checkbox" name="mycheckbox"  disabled="disabled" th:checked="${user.isenabled} ? 'checked'"/>
+                             </td>
+                        <td> 
+                            <a class="btn btn-outline-primary" th:href="@{'/admin/resetPassword'(login=${user.login})}"><span th:text="#{reset.password}"></span></a>
+                        </td>
+                        <td> 
+                            <a class="btn btn-outline-primary" th:href="@{'/admin/status'(login=${user.login})}"><span th:text="#{active.deactive}"></span></a>
+                        </td>
+                        </tr>
+                    </tbody>
+                </table>
+               <button type="button"  onclick="location.href='/admin/register'"  class="btn btn-outline-primary" th:text="#{addUser}"></button>
+            </div>
+        </div>
+    </body>
+
+</html>

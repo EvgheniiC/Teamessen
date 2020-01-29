@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8"/>
+        <link th:href="@{/bootstrap/css/bootstrap.min.css}"
+              rel="stylesheet" media="screen"/>
+        <script th:src="@{/jquery/jquery.min.js}"></script>  
+        <script th:src="@{/popper/popper.min.js}"></script>  
+        <script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>   
+
+
+        <style>
+            body {
+                background: #007bff;
+                background: linear-gradient(to right, #0062E6, #33AEFF);
+            }
+        </style>  
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+                    <div class="card card-signin my-5">
+                        <div class="card-body">
+                            <h5 class="card-title text-center">
+                                Herzlichen Glückwunsch, Sie haben sich erfolgreich auf der Website registriert!</h5>
+
+                                <div class="form-label-group">
+                                    <label for="login">Login</label>
+                                    <input type="text" class="form-control"  th:value="${login}"  readonly="readonly" />
+                                </div>
+                               <p>
+                                <div class="form-label-group">
+                                 <a class="btn btn-lg btn-primary btn-block text-uppercase" th:href="@{/login}">Einlogen</a>
+                                 </div>
+                                </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>

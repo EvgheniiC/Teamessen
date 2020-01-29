@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:utext="${title}"></title>
+    <meta charset="UTF-8"/>
+    <link th:href="@{/bootstrap/css/bootstrap.min.css}"
+          rel="stylesheet" media="screen"/>
+    <script th:src="@{/jquery/jquery.min.js}"></script>
+    <script th:src="@{/popper/popper.min.js}"></script>
+    <script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/main.js}"></script>
+    <style>
+        body {
+            background: #007bff;
+            background: linear-gradient(to right, #0062E6, #33AEFF);
+        }
+
+        th, td {
+            padding: 5px;
+        }
+
+        td span {
+            font-size: 90%;
+            font-style: italic;
+            color: red;
+        }
+
+        .error {
+            color: red;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+                            <div class="row">
+                                <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+                                    <div class="card card-signin my-5">
+                                        <div class="card-body" style="widows: 400px">
+                                            <h5 class="card-title text-center" th:text="#{Register.Info}"></h5>
+                                            <div th:if="${errorMessage != null}"
+                                                 th:utext="${errorMessage}" class="error">...
+                                            </div>
+
+                                            <form th:action="@{/register}" th:object="${userForm}" method="POST">
+                                                <input type="hidden" id="hAvatart" th:field="*{avatar}" th:value="*{avatar}"/>
+
+                        <table>
+                            <tr>
+                                <td style="widows: 400px" th:text="#{Login}"></td>
+                                <td><input type="text" class="form-control" th:field="*{email}"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}">..</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td th:text="#{Name}"></td>
+                                <td><input type="text" class="form-control" th:field="*{name}"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}">..</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td th:text="#{Password}"></td>
+                                <td><input type="password" class="form-control" th:field="*{password}"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}">..</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td th:text="#{Confirm.Password}"></td>
+                                <td><input type="password" class="form-control" th:field="*{confirmPassword}"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <span th:if="${#fields.hasErrors('confirmPassword')}"
+                                          th:errors="*{confirmPassword}">..</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td th:text="#{Avatar}"></td>
+                                <td><img id="avatar" name='avatar' class="form-control"
+                                         th:field="*{avatar}" th:src="*{avatar}"/>
+                                    <button type="button" class="btn  btn-success btn-sm text-uppercase"
+                                            data-toggle="modal" data-target="#cancelModalCenter"
+                                            th:text="#{Load.Image}">
+                                    </button>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <span th:if="${#fields.hasErrors('avatar')}" th:errors="*{avatar}">..</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input class="btn btn-lg btn-primary btn-block text-uppercase" type="submit"
+                                           th:value="#{Save.button}"/></td>
+                                <td>
+                                    <a class="btn btn-lg btn-primary btn-block text-uppercase" th:href="@{/login}"
+                                       th:text="#{Cancel}"></a>
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="cancelModalCenter" tabindex="-1" role="dialog" aria-labelledby="cancelModalCenterTitle"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <form th:action="@{/upload}" id="fileUploadForm"
+              method="POST" enctype="multipart/form-data">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="cancelModalLongTitle" th:text="#{Warning}"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <span th:text="#{File.Upload}"></span><input type="file" name="file" accept="image/*"></input>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" th:text="#{Cancel}"></button>
+                    <button type="submit" id="submitButton" class="btn btn-danger" th:text="#{Load}"></button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div><!-- Modal -->
+
+</body>
+</html>

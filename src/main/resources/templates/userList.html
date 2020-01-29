@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>User List</h1>
+<br/><br/>
+<div>
+    <table border="1">
+        <tr>
+            <th>User Name</th>
+        </tr>
+        <tr th:each ="user: ${usersForm}">
+            <td th:utext="${user.name}">...</td>
+        </tr>
+    </table>
+</div>
+
+
+<button type="button" onclick="window.history.go(-1);">Back</button>
+
+</body>
+</html>

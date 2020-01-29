@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Team List</h1>
+<br/><br/>
+<div>
+    <table border="1">
+        <tr>
+            <th>Team Name</th>
+            <th>Team Url</th>
+
+        </tr>
+        <tr th:each ="tm : ${teamForm}">
+            <td th:utext="${tm.name}">...</td>
+            <td th:utext="${tm.url}">...</td>
+        </tr>
+    </table>
+</div>
+<button type="button" onclick="window.history.go(-1);">Back</button>
+
+</body>
+</html>
