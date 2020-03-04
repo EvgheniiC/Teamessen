@@ -1,0 +1,6 @@
+com\eventim\teamessen\resurse\Database.class
+com\eventim\teamessen\entities\Bewertung.class
+com\eventim\teamessen\entities\Event.class
+com\eventim\teamessen\entities\Optionen.class
+com\eventim\teamessen\entities\Team.class
+com\eventim\teamessen\entities\User.class
